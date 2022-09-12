@@ -1,6 +1,8 @@
 const getButton = (id) =>{
     const getId = document.getElementById(id)
-    return getId.value;
+    const data = getId.value
+    getId.value = '';
+    return data;
 }
 const productField = () =>{
     const nameField = getButton('product-name')
@@ -13,7 +15,19 @@ const productField = () =>{
     // }
     // console.log(Number.isInteger(intrizer));
     if(!isNaN(nameField) || !Number.isInteger(intrizer)){
-        console.log('vul input');
+        // alert('vul input');
+        // confirm('please corect input');
+        // prompt('please corect input');
+        console.log('please corect input');
+        // console.warn('please corect input');
     }
+    // console.log(nameField,intrizer);
+    setstroage(nameField,intrizer)
 }
-
+const setstroage = (field,value)=>{
+    const setValue = {
+        name:field,
+        products:value
+    }
+    localStorage.setItem('p_name',JSON.stringify(setValue))
+}
