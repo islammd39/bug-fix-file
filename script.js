@@ -22,12 +22,42 @@ const productField = () =>{
         // console.warn('please corect input');
     }
     // console.log(nameField,intrizer);
-    setstroage(nameField,intrizer)
+    setStroage(nameField,intrizer)
 }
-const setstroage = (field,value)=>{
-    const setValue = {
-        name:field,
-        products:value
+
+const getItems = () =>{
+    const getProductValue = localStorage.getItem('all products')
+    const parsItems = JSON.parse(getProductValue)
+    return parsItems
+}
+const setStroage = (field,value)=>{
+    // const setValue = {
+    //     name:field,
+    //     products:value
+    // }
+    // localStorage.setItem('p_name',JSON.stringify(setValue))
+    let getProductValue = getItems()
+    // console.log(getProductValue);
+    if(!getProductValue){
+        getProductValue = {};
     }
-    localStorage.setItem('p_name',JSON.stringify(setValue))
+    getProductValue[field] = value;
+    localStorage.setItem('all products', JSON.stringify(getProductValue)) 
+  
+    // console.log(getProductValue);
 }
+
+const getDocument = ()=>{
+    const items = getItems()
+    // console.table(items);
+
+    const sectionDiv = document.getElementById('all-products')
+    for(const item in items){
+        // console.log(item, items[item]);
+        const div = document.createElement('div')
+        div.innerHTML = `
+        
+        `
+    }
+}
+getDocument()
